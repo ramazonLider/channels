@@ -1,0 +1,56 @@
+# Django
+*.log
+*.pot
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
+db.sqlite3
+/static/
+media/
+
+# Environment
+.env
+venv/
+ENV/
+.env/
+*.env
+
+# VS Code
+.vscode/
+
+# PyCharm
+.idea/
+
+# MacOS
+.DS_Store
+
+# Python
+*.egg
+*.egg-info
+dist/
+build/
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
+*.sqlite3
+
+# Venv
+venv/
+ENV/
+
+# Caches
+*.cache
+*.py[cod]
+*.pyo
+*.pyd
+*.pyd
+
+# Coverage
+.coverage
+*.cover
+coverage.xml
+*.coveragerc
+nosetests.xml
+test_*.xml
