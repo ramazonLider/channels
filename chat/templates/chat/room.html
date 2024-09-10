@@ -21,12 +21,16 @@
     <script>
         const roomName = JSON.parse(document.getElementById('room-name').textContent);
 
+        // Determine WebSocket protocol (ws:// or wss://) based on the current protocol
         const chatSocket = new WebSocket(
-            'ws://' + window.location.host + '/ws/chat/' + roomName + '/'
+            (window.location.protocol === 'https:' ? 'wss://' : 'ws://') + 
+            window.location.host + 
+            '/ws/chat/' + roomName + '/'
         );
 
         chatSocket.onmessage = function(e) {
             const data = JSON.parse(e.data);
+            // Append message to chat log
             document.querySelector('#chat-log').value += (data.message + '\n');
         };
 
@@ -42,11 +46,11 @@
 
         document.querySelector('#chat-message-submit').onclick = function(e) {
             const messageInputDom = document.querySelector('#chat-message-input');
-            const message = messageInputDom.value;
-            chatSocket.send(JSON.stringify({
-                'message': message
-            }));
-            messageInputDom.value = '';
+            const message = messageInputDom.value.trim();
+            if (message) {
+                chatSocket.send(JSON.stringify({'message': message}));
+                messageInputDom.value = '';
+            }
         };
     </script>
 </body>
